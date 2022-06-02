@@ -1,15 +1,20 @@
 require 'sinatra'
 require 'sinatra/reloader' if development?
 
-get '/cat' do
+get '/named-cat' do
+  @name = ["Amigo", "Misty", "Almond"].sample
+  erb(:index)
+end
+
+get '/random-cat' do
+  p params
+  @name = params[:name]
   erb(:index)
 end
 
 get '/ruby' do
   erb("Hi there, Visitor <%= 2 + 2 %>!")
 end
-
-
 
 
 get '/secret' do
